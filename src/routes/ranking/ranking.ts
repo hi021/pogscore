@@ -1,10 +1,10 @@
-import { Component, inject } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  styleUrl: "./ranking.scss",
-  templateUrl: "./ranking.html"
+	styleUrl: './ranking.scss',
+	templateUrl: './ranking.html',
 })
 export class RankingComponent {
-  protected route = inject(ActivatedRoute);
+	protected route = inject(ActivatedRoute);
 }

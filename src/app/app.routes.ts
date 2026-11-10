@@ -4,18 +4,18 @@ import { PlayerComponent } from '../routes/user/user';
 import { RankingComponent } from '../routes/ranking/ranking';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent
-  },
-    {
-    path: 'player/:idOrName',
-    component: PlayerComponent
-  },
-      {
-    path: 'ranking',
-    component: RankingComponent
-  }
+	{
+		path: '',
+		component: HomeComponent,
+	},
+	{
+		path: 'player/:idOrName',
+		component: PlayerComponent,
+	},
+	{
+		path: 'ranking',
+		component: RankingComponent,
+	},
 
-  // path: '**'
+	// path: '**'
 ];
