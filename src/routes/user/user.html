@@ -1,1 +1,8 @@
-<main>user {{ player?.name ?? '' }}</main>
+<main>
+	@if (player()) {
+		<span> user {{ player()!.user_id }} </span>
+		<span> user {{ player()!.username }} </span>
+	} @else {
+		<p>loading or error idk</p>
+	}
+</main>

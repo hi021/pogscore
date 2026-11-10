@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, Signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DataFetcher } from '../../services/DataFetcher';
 
 @Component({
 	styleUrl: './user.scss',
@@ -7,11 +8,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PlayerComponent {
 	protected route = inject(ActivatedRoute);
-	protected player: PogScore.Player | undefined;
+	protected player = signal<ScoreApi.UserRankResponse | undefined>(undefined);
 
 	constructor() {
-		this.route.params.subscribe((v) => {
-			this.player = { countryCode: 'XD', id: v['idOrName'], name: v['idOrName'] };
+		this.route.params.subscribe(async (params) => {
+			this.player.set(await DataFetcher.fetchUser(params['idOrName']));
 		});
 	}
 }
