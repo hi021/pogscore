@@ -1,0 +1,37 @@
+<form class="search-input-wrapper input-dark row" (ngSubmit)="onSubmit()">
+	<div class="autocmp-wrapper">
+		<input
+			class="search-input input-dark"
+			type="text"
+      name="query"
+			placeholder="osu! username"
+			autocomplete="new-password"
+			spellcheck="false"
+			[disabled]="disabled"
+			[(ngModel)]="query"
+		/>
+		<!-- <ul class="autocmp-items"> -->
+		<!-- {#each autocompleteEntries as a (a._id)}
+				<li transition:slide={{ duration: 100, axis: "y" }}>
+					<a
+						href=""
+						class="autocmp-item"
+						tabindex="0"
+						role="button"
+						onclick={preventDefault(e => {
+							value = a.name;
+							gotoPlayer(a);
+							autocompleteEntries = [];
+						})}>
+						<img class="osu-avatar-small" alt="" src={getAvatarURL(a._id)} style="margin-right: 1rem;" />
+						{a.name}
+					</a>
+				</li>
+			{/each} -->
+		<!-- </ul> -->
+	</div>
+
+	<button type="submit" class="btn-search btn-none" aria-label="Search" [disabled]="disabled">
+		<span class="icon search big"></span>
+	</button>
+</form>
