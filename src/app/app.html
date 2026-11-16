@@ -13,12 +13,27 @@
 	<span></span>
 </nav>
 
-<router-outlet />
+<main class="flex-fill column" style="padding: 1rem 5.5%;">
+	<router-outlet></router-outlet>
+</main>
+
+<footer class="row flex-space-between flex-center-vertical">
+	<span class="row flex-center-vertical" style="gap: 1ch;"><span class="icon github"></span><a class="a" href="https://github.com/hi021/pogscore">repository</a></span>
+	<span>pogscore v2026-11-20</span>
+	<span>part of <a class="a" href="https://poggers.moe"><strong>poggers</strong></a></span>
+</footer>
 
 <style>
 	nav {
 		padding: 0 1.25rem;
 		border-bottom: 1px solid var(--color-light);
+		font-size: 0.925rem;
+	}
+	
+	footer {
+		background-color: var(--color-dark);
+		padding: 0.5rem 1.25rem;
+		border-top: 1px solid var(--color-light);
 		font-size: 0.925rem;
 	}
 
@@ -37,7 +52,7 @@
 	}
 	ol a.active {
 		opacity: 1;
-		color: var(--color-active);
+		color: var(--color-pink);
 	}
 
 	.logo-text {

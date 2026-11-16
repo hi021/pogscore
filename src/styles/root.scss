@@ -57,3 +57,6 @@ body {
 	--vis-dark-tooltip-text-color: var(--color-light);
 	--vis-tooltip-padding: 4px 6px;
 }
+app-root {
+	min-height: 100svh;
+}
