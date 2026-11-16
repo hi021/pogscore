@@ -13,7 +13,7 @@ export const routes: Routes = [
 		component: PlayerComponent,
 	},
 	{
-		path: 'ranking',
+		path: 'ranking/**',
 		component: RankingComponent,
 	},
 
