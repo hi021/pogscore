@@ -3,9 +3,8 @@ import { Utils } from './Utils';
 
 @Service()
 export class DataFetcher {
-	// TODO: load from env
-	public static readonly USER_AGENT = 'pogscore (+https://github.com/hi021/pogscore)'; // gets overwritten by the browser...
-	// TODO: cache request
+	public static readonly CACHE_CONTROL_HEADER = 'max-age=1020'; // 17 minutes - roughly half of the refresh cycle; could be pointless, as CF caches the API anyway
+	// TODO?: load from env
 	public static readonly API_BASE_URL = 'https://score.respektive.pw';
 	public static readonly API_USER_URL = DataFetcher.API_BASE_URL + '/u/';
 
@@ -35,7 +34,9 @@ export class DataFetcher {
 		queryField: PogScore.PlayerQueryField = 'user_id',
 	) {
 		const res = await fetch(DataFetcher.buildUserUrl(idOrName, queryField), {
-			headers: { 'User-Agent': DataFetcher.USER_AGENT },
+			headers: {
+				'Cache-Control': DataFetcher.CACHE_CONTROL_HEADER,
+			},
 		});
 		if (!res.ok)
 			throw new Error(`Failed to fetch player with ${queryField} of '${idOrName}': ${res.status} ${res.statusText}`);
