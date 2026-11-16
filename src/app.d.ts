@@ -1,11 +1,21 @@
 namespace PogScore {
-	// interface Player {
-	// 	id: number;
-	// 	name: string;
-	// 	countryCode: string;
-	// }
+	type TickFormatter<T> = (tick: T, i: number, ticks: T[]) => string;
+	type Datum<T> = { x: T | undefined; y: number | undefined };
 
-	type ChartRecord = { x: number; y: number };
+	type AxisConfig = {
+		position: Position;
+		label?: LabelConfig;
+		tickFormat?: TickFormatter<any>;
+	};
+
+	type LabelConfig = {
+		value?: string;
+		labelColor?: string;
+		labelMargin?: number;
+		labelFontSize?: string;
+		labelTextSeparator?: string;
+	};
+
 	type PlayerQueryField = 'username' | 'user_id';
 }
 

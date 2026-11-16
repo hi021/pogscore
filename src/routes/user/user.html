@@ -1,8 +1,16 @@
-@if (player()) {
+@if (errorMsg()) {
+	<p>{{ errorMsg() }}</p>
+} @else if (player()) {
 	<span> {{ player()!.user_id }} </span>
 	<span> {{ player()!.username }} </span>
 
-	<multi-line-chart [data]="rankData"></multi-line-chart>
+	<multi-line-chart
+		[data]="rankData"
+		yDirection="south"
+		[xConfig]="xConfig"
+		[yConfig]="yConfig"
+		[tooltipTemplate]="tooltipTemplate"
+	></multi-line-chart>
 } @else {
-	<p>loading or error idk</p>
+	<p>loading...</p>
 }

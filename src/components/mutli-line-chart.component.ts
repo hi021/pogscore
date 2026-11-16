@@ -1,23 +1,63 @@
-import { Component } from '@angular/core';
-import { VisXYContainerModule, VisLineModule, VisAxisModule } from '@unovis/angular';
+import { Component, Input } from '@angular/core';
+import {
+	VisAxisModule,
+	VisCrosshairModule,
+	VisLineModule,
+	VisTooltipModule,
+	VisXYContainerModule,
+} from '@unovis/angular';
+import { Direction, NumericAccessor, Position, Spacing } from '@unovis/ts/types';
+import { Utils } from '../services/Utils';
 
 @Component({
 	selector: 'multi-line-chart',
-	inputs: ['data', 'width', 'height', 'margin', 'padding'],
-	imports: [VisXYContainerModule, VisLineModule, VisAxisModule],
+	imports: [VisXYContainerModule, VisLineModule, VisAxisModule, VisCrosshairModule, VisTooltipModule],
 	templateUrl: './multi-line-chart.html',
 })
-export class MultiLineChartComponent {
-	x = (d: PogScore.ChartRecord): number => d.x;
-	y = (d: PogScore.ChartRecord): number => d.y;
-	data: PogScore.ChartRecord[] = [
-		{ x: 0, y: 0 },
-		{ x: 1, y: 2 },
-		{ x: 2, y: 1 },
+export class MultiLineChartComponent<T> {
+	@Input() data: Array<PogScore.Datum<T>> = [];
+	@Input() xAccessor: NumericAccessor<PogScore.Datum<T>> = (d) => (d.x == null ? null : Number(d.x));
+	@Input() yAccessor: NumericAccessor<PogScore.Datum<T>> = (d) => (d.y == null ? null : Number(d.y));
+
+	@Input() xConfig: PogScore.AxisConfig = {
+		position: Position.Bottom,
+		label: { labelColor: 'var(--color-lighter)', value: 'X', labelFontSize: '14', labelMargin: 10 },
+		tickFormat: (tick) => tick.toString(),
+	};
+	@Input() yConfig: PogScore.AxisConfig = {
+		position: Position.Left,
+		label: { labelColor: 'var(--color-lighter)', value: 'Y', labelFontSize: '14', labelMargin: 10 },
+		tickFormat: (tick) => tick.toString(),
+	};
+
+	@Input() yDirection: Direction | 'west' | 'east' | 'north' | 'south' = Direction.North;
+
+	@Input() yColors = [
+		'#B39DDB',
+		'#CE93D8',
+		'#F48FB1',
+		'#EF9A9A',
+		'#FFAB91',
+		'#FFCC80',
+		'#FFE082',
+		'#FFF59D',
+		'#E6EE9C',
+		'#C5E1A5',
 	];
 
-	width = 0;
-	height = 0;
-	margin = { top: 20, right: 20, bottom: 40, left: 50 };
-	padding = { top: 10, right: 10, bottom: 10, left: 10 };
+	@Input() tooltipTemplate?: (
+		d: PogScore.Datum<T>,
+		x: number | Date,
+		data: Array<PogScore.Datum<T>>,
+		leftNearestDatumIndex?: number,
+	) => string;
+
+	@Input() width = 0;
+	@Input() height = 0;
+	@Input() margin: Spacing = { top: 20, right: 20, bottom: 40, left: 50 };
+	@Input() padding: Spacing = { top: 10, right: 10, bottom: 10, left: 10 };
+
+	protected getYColor = (d: unknown, i: number, key?: string, ...any: unknown[]) => {
+		return this.yColors[i % this.yColors.length];
+	};
 }

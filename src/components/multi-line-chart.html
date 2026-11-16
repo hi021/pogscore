@@ -1,7 +1,41 @@
 <div class="chart-container multi-line-chart-container">
-	<vis-xy-container [width]="width" [height]="height" [margin]="margin" [padding]="padding">
-		<vis-line [data]="data" [x]="x" [y]="y"></vis-line>
-		<vis-axis type="x"></vis-axis>
-		<vis-axis type="y"></vis-axis>
+	<vis-xy-container
+		[data]="data"
+		[width]="width"
+		[height]="height"
+		[margin]="margin"
+		[padding]="padding"
+		[yDirection]="yDirection"
+	>
+		<vis-line [x]="xAccessor" [y]="yAccessor" [lineWidth]="5" [color]="getYColor" [duration]="0"></vis-line>
+		<vis-axis
+			type="x"
+			[tickFormat]="xConfig.tickFormat"
+			[gridLine]="false"
+			[label]="xConfig.label?.value"
+			[labelColor]="xConfig.label?.labelColor"
+			[labelFontSize]="xConfig.label?.labelFontSize"
+			[labelMargin]="xConfig.label?.labelMargin"
+			[position]="xConfig.position"
+		></vis-axis>
+		<vis-axis
+			type="y"
+			[tickFormat]="yConfig.tickFormat"
+			[gridLine]="false"
+			[label]="yConfig.label?.value"
+			[labelColor]="yConfig.label?.labelColor"
+			[labelFontSize]="yConfig.label?.labelFontSize"
+			[labelMargin]="yConfig.label?.labelMargin"
+			[position]="yConfig.position"
+		></vis-axis>
+		<vis-crosshair
+			[x]="xAccessor"
+			[y]="yAccessor"
+			[strokeColor]="getYColor"
+			color="var(--color-dark)"
+			[duration]="0"
+			[template]="tooltipTemplate"
+		></vis-crosshair>
+		<vis-tooltip> </vis-tooltip>
 	</vis-xy-container>
 </div>

@@ -1,0 +1,15 @@
+.chart-container {
+	--vis-crosshair-circle-stroke-opacity: 1;
+	--vis-crosshair-line-stroke-width: 3;
+	--vis-crosshair-line-stroke-color: var(--color-active);
+	--vis-axis-grid-color: color-mix(in srgb, var(--color-lighter) 70%, transparent);
+	--vis-dark-axis-grid-color: color-mix(in srgb, var(--color-lighter) 70%, transparent);
+
+	circle {
+		r: 6;
+	}
+	path {
+		stroke-linejoin: round;
+		stroke-linecap: round;
+	}
+}

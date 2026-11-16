@@ -19,6 +19,31 @@ export class Utils {
 		return null;
 	}
 
+	public static formatNumber(number: number | string, delimiter = ' ') {
+		return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, delimiter);
+	}
+
+	public static formatDate(date?: Date, utc?: boolean) {
+		if (!date) date = new Date();
+		const YYYY = utc ? date.getUTCFullYear() : date.getFullYear();
+		const MM = ((utc ? date.getUTCMonth() : date.getMonth()) + 1).toString().padStart(2, '0');
+		const DD = (utc ? date.getUTCDate() : date.getDate()).toString().padStart(2, '0');
+		return `${YYYY}-${MM}-${DD}`;
+	}
+
+	// TODO: umm this is gonna be client date
+	public static getServerDate() {
+		const now = new Date();
+		now.setHours(0, 0, 0, 0);
+		return now;
+	}
+
+	public static addDays(date: Date, days: number) {
+		const d = new Date(date);
+		d.setDate(d.getUTCDate() + days);
+		return d;
+	}
+
 	public static getAvatarURL(id: number | string) {
 		return `https://a.ppy.sh/${id}?0.jpg`;
 	}
