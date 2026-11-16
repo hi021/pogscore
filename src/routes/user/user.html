@@ -1,8 +1,8 @@
-<main>
-	@if (player()) {
-		<span> user {{ player()!.user_id }} </span>
-		<span> user {{ player()!.username }} </span>
-	} @else {
-		<p>loading or error idk</p>
-	}
-</main>
+@if (player()) {
+	<span> {{ player()!.user_id }} </span>
+	<span> {{ player()!.username }} </span>
+
+	<multi-line-chart [data]="rankData"></multi-line-chart>
+} @else {
+	<p>loading or error idk</p>
+}

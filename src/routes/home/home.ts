@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserSearchComponent } from '../../components/UserSearchComponent';
+import { UserSearchComponent } from '../../components/user-search.component';
 
 @Component({
 	styleUrl: './home.scss',

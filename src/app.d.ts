@@ -5,6 +5,7 @@ namespace PogScore {
 	// 	countryCode: string;
 	// }
 
+	type ChartRecord = { x: number; y: number };
 	type PlayerQueryField = 'username' | 'user_id';
 }
 

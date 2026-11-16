@@ -9,6 +9,7 @@
 			spellcheck="false"
 			[disabled]="disabled"
 			[(ngModel)]="query"
+			style="--shadow-color: {{ autocompleteEntries.length ? 'transparent' : 'var(--color-darkest)' }}"
 		/>
 		<ul class="autocmp-items">
 			@for (plr of autocompleteEntries; track plr.user_id) {

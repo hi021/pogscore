@@ -13,14 +13,18 @@
 	<span></span>
 </nav>
 
-<main class="flex-fill column" style="padding: 1rem 5.5%;">
+<main class="flex-fill column" style="padding: 1rem 5.5%">
 	<router-outlet></router-outlet>
 </main>
 
 <footer class="row flex-space-between flex-center-vertical">
-	<span class="row flex-center-vertical" style="gap: 1ch;"><span class="icon github"></span><a class="a" href="https://github.com/hi021/pogscore">repository</a></span>
+	<span class="row flex-center-vertical" style="gap: 1ch"
+		><span class="icon github"></span><a class="a" href="https://github.com/hi021/pogscore">repository</a></span
+	>
 	<span>pogscore v2026-11-20</span>
-	<span>part of <a class="a" href="https://poggers.moe"><strong>poggers</strong></a></span>
+	<span
+		>part of <a class="a" href="https://poggers.moe"><strong>poggers</strong></a></span
+	>
 </footer>
 
 <style>
@@ -29,7 +33,7 @@
 		border-bottom: 1px solid var(--color-light);
 		font-size: 0.925rem;
 	}
-	
+
 	footer {
 		background-color: var(--color-dark);
 		padding: 0.5rem 1.25rem;
@@ -46,6 +50,7 @@
 		line-height: 1;
 		color: inherit;
 		opacity: 0.75;
+		transition: opacity 0.125s ease;
 	}
 	ol a:is(:hover) {
 		opacity: 1;
@@ -60,6 +65,10 @@
 		color: inherit;
 		text-decoration: none;
 		margin-bottom: 0.25em;
+		transition:
+			color 1s ease,
+			text-shadow 1s ease,
+			background 1s ease;
 	}
 	.logo-text:is(:hover, :focus) {
 		background: linear-gradient(
