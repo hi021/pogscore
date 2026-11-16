@@ -35,3 +35,82 @@
 		<span class="icon search big"></span>
 	</button>
 </form>
+
+<style>
+	.search-input-wrapper {
+		--radius: 9999px;
+		position: relative;
+		width: 100%;
+		min-width: 2rem;
+		align-items: center;
+		padding: 0;
+		border-radius: var(--radius);
+	}
+	.search-input-wrapper.disabled {
+		opacity: 0.5;
+	}
+	.btn-search {
+		position: absolute;
+		width: 3em;
+		height: 100%;
+		right: -1px;
+		color: var(--color-lighter);
+		padding: 10px;
+		border-radius: 0;
+		border-top-right-radius: var(--radius);
+		border-bottom-right-radius: var(--radius);
+	}
+	.btn-search:not(:disabled):is(:hover, :focus) {
+		background-color: var(--color-darker);
+	}
+	.search-input {
+		padding-left: 1em;
+		padding-right: 2.875em;
+		background-color: transparent;
+		width: 100%;
+	}
+	.search-input:focus-visible {
+		box-shadow: 2px 2px 4px var(--shadow-color);
+		outline: transparent 3px solid;
+	}
+	/* SEARCH WRAPPER */
+
+	/* AUTOCOMPLETE */
+	.autocmp-wrapper {
+		width: 100%;
+		position: relative;
+		display: inline-flex;
+	}
+	.autocmp-items {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		margin: 0;
+		padding: 0 24px;
+		z-index: 2;
+		list-style: none;
+	}
+	.autocmp-items > li:last-child > .autocmp-item {
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+
+	.autocmp-item {
+		display: flex;
+		top: 100%;
+		left: 0;
+		right: 0;
+		cursor: pointer;
+		color: inherit;
+		background-color: var(--color-darkish);
+		text-decoration: none;
+		align-items: center;
+		line-height: 1;
+		padding: 0.5rem;
+	}
+	.autocmp-item:is(:hover, :focus) {
+		outline-color: transparent;
+		background-color: var(--color-purple);
+	}
+</style>

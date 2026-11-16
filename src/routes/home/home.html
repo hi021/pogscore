@@ -1,14 +1,51 @@
 <main class="flex-fill column" style="padding: 0 3.5%">
 	<div class="search-logo">
-		<span class="logo-letter">p</span>
-		<span class="logo-letter">o</span>
-		<span class="logo-letter">g</span>
-		<span class="logo-letter logo-letter-tilted" style="color: var(--color-pink)">s</span>
-		<span class="logo-letter" style="color: var(--color-pink)">c</span>
-		<span class="logo-letter" style="color: var(--color-pink)">o</span>
-		<span class="logo-letter" style="color: var(--color-pink)">r</span>
-		<span class="logo-letter" style="color: var(--color-pink)">e</span>
+		<span class="logo-letter pog">p</span>
+		<span class="logo-letter pog">o</span>
+		<span class="logo-letter pog logo-letter-before-slanted">g</span>
+		<span class="logo-letter score logo-letter-slanted">s</span>
+		<span class="logo-letter score">c</span>
+		<span class="logo-letter score">o</span>
+		<span class="logo-letter score">r</span>
+		<span class="logo-letter score">e</span>
 	</div>
 
 	<app-user-search></app-user-search>
 </main>
+
+<style>
+	.search-logo {
+		font-weight: 700;
+		font-size: 7.5rem;
+		letter-spacing: -0.5625rem;
+		display: flex;
+		justify-content: center;
+		cursor: default;
+		margin: 4rem 1rem;
+		user-select: none;
+	}
+	.logo-letter {
+		line-height: 0.75;
+		transition: transform 0.15s ease;
+	}
+	.logo-letter:hover {
+		transform: translateY(-10px);
+	}
+	.logo-letter-before-slanted {
+		letter-spacing: -0.925rem;
+	}
+	.logo-letter-slanted {
+		transform: rotate(-10deg);
+		transition:
+			transform 0.15s ease,
+			margin 0.15s ease;
+	}
+	.logo-letter-slanted:hover {
+		transform: rotate(0deg);
+		margin-left: 0;
+	}
+
+	.logo-letter.score {
+		color: var(--color-pink);
+	}
+</style>

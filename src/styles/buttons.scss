@@ -1,0 +1,64 @@
+button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	--clr: var(--clr-gray);
+	--clr-hover: var(--clr-gray-h);
+	color: var(--color-darkest);
+	text-decoration: none;
+	font-size: 1rem;
+	border: none;
+	border-radius: 0.4rem;
+	background-color: hsl(var(--clr));
+	border-color: hsl(var(--clr));
+	padding: 0.375rem 0.75rem;
+	margin: 0;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	transition:
+		background-color 0.2s,
+		border-color 0.1s ease-in-out,
+		box-shadow 0.1s ease-in-out;
+	cursor: pointer;
+}
+button:focus {
+	outline-color: transparent;
+	box-shadow: 0 0 0 0.15rem hsla(var(--clr), 0.5);
+}
+button:hover {
+	background-color: hsl(var(--clr-hover));
+}
+button:disabled {
+	opacity: 0.55;
+	cursor: default !important;
+}
+
+.btn-small {
+	font-size: 0.75em;
+	padding: 0.15rem 0.35rem;
+}
+.btn-none,
+.btn-icon {
+	padding: 0;
+	border-radius: 9999px;
+	--clr: transparent;
+	--clr-hover: transparent;
+	border: none;
+	background: none;
+	outline-color: transparent;
+}
+.btn-icon {
+	display: inline-flex;
+	align-items: center;
+	opacity: 0.7;
+}
+.btn-icon:not(:disabled):is(:hover, :focus) {
+	opacity: 1;
+}
+.btn-icon:disabled {
+	opacity: 0.25;
+}
+.btn-rect {
+	border-radius: 0;
+}
