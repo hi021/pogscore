@@ -3,32 +3,24 @@
 		<input
 			class="search-input input-dark"
 			type="text"
-      name="query"
+			name="query"
 			placeholder="osu! username"
 			autocomplete="new-password"
 			spellcheck="false"
 			[disabled]="disabled"
 			[(ngModel)]="query"
 		/>
-		<!-- <ul class="autocmp-items"> -->
-		<!-- {#each autocompleteEntries as a (a._id)}
-				<li transition:slide={{ duration: 100, axis: "y" }}>
-					<a
-						href=""
-						class="autocmp-item"
-						tabindex="0"
-						role="button"
-						onclick={preventDefault(e => {
-							value = a.name;
-							gotoPlayer(a);
-							autocompleteEntries = [];
-						})}>
-						<img class="osu-avatar-small" alt="" src={getAvatarURL(a._id)} style="margin-right: 1rem;" />
-						{a.name}
+		<ul class="autocmp-items">
+			@for (plr of autocompleteEntries; track plr.user_id) {
+				<li>
+					<a routerLink="/player/{{ plr.user_id }}" class="autocmp-item" tabindex="0" role="button">
+						<img class="osu-avatar-small" alt="" [src]="Utils.getAvatarURL(plr.user_id)" style="margin-right: 1rem" />
+						<span>{{ plr.username }}</span>
+						<span class="autocmp-rank" style="margin-left: auto">#{{ plr.rank }}</span>
 					</a>
 				</li>
-			{/each} -->
-		<!-- </ul> -->
+			}
+		</ul>
 	</div>
 
 	<button type="submit" class="btn-search btn-none" aria-label="Search" [disabled]="disabled">
@@ -73,9 +65,7 @@
 		box-shadow: 2px 2px 4px var(--shadow-color);
 		outline: transparent 3px solid;
 	}
-	/* SEARCH WRAPPER */
 
-	/* AUTOCOMPLETE */
 	.autocmp-wrapper {
 		width: 100%;
 		position: relative;

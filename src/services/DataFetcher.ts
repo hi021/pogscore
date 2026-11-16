@@ -35,7 +35,7 @@ export class DataFetcher {
 		queryField: PogScore.PlayerQueryField = 'user_id',
 	) {
 		const res = await fetch(DataFetcher.buildUserUrl(idOrName, queryField), {
-			headers: { 'User-Agent': DataFetcher.USER_AGENT }, 
+			headers: { 'User-Agent': DataFetcher.USER_AGENT },
 		});
 		if (!res.ok)
 			throw new Error(`Failed to fetch player with ${queryField} of '${idOrName}': ${res.status} ${res.statusText}`);

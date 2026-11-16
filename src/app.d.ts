@@ -1,9 +1,9 @@
 namespace PogScore {
-	interface Player {
-		id: number;
-		name: string;
-		countryCode: string;
-	}
+	// interface Player {
+	// 	id: number;
+	// 	name: string;
+	// 	countryCode: string;
+	// }
 
 	type PlayerQueryField = 'username' | 'user_id';
 }
@@ -37,4 +37,6 @@ namespace ScoreApi {
 		user_id: number;
 		score: number;
 	}
+
+	type UserSearchResponse = Pick<ScpApi.UserRankResponse, 'username' | 'user_id' | 'rank'>;
 }
