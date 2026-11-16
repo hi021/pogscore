@@ -42,7 +42,6 @@ export class DataFetcher {
 			throw new Error(`Failed to fetch player with ${queryField} of '${idOrName}': ${res.status} ${res.statusText}`);
 
 		const resJson: ScoreApi.UserRankResponse[] = await res.json();
-		console.log(resJson);
 		if (!(resJson as any)?.[0]?.username)
 			throw new Error(
 				`No player with ${queryField} of '${idOrName}' found. Remember that the username must be an exact match.`,

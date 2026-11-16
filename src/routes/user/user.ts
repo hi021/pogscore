@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Position } from '@unovis/ts/types';
 import { MultiLineChartComponent } from '../../components/mutli-line-chart.component';
 import { DataFetcher } from '../../services/DataFetcher';
+import { PageTitle } from '../../services/PageTitle';
 import { Utils } from '../../services/Utils';
 
 @Component({
@@ -20,6 +21,7 @@ export class PlayerComponent {
 	};
 
 	protected readonly route = inject(ActivatedRoute);
+	protected readonly pageTitle = inject(PageTitle);
 	protected readonly player = signal<ScoreApi.UserRankResponse | undefined>(undefined);
 	protected readonly errorMsg = signal<string>('');
 	protected rankData: Array<{ x: Date | undefined; y: number | undefined }> = [];
@@ -47,9 +49,11 @@ export class PlayerComponent {
 	constructor() {
 		this.route.params.subscribe(async (params) => {
 			try {
+				this.pageTitle.setTitle();
 				this.errorMsg.set('');
 				const player = await DataFetcher.fetchUser(params['idOrName']);
 				this.player.set(player);
+				this.pageTitle.setTitle(player?.username);
 				this.rankData = player?.rank_history
 					.filter((entry): entry is ScoreApi.RankHistoryEntry => !!entry?.date)
 					.map((entry) => {
