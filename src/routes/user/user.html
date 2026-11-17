@@ -1,8 +1,88 @@
 @if (errorMsg()) {
 	<p>{{ errorMsg() }}</p>
 } @else if (player()) {
-	<span> {{ player()!.user_id }} </span>
-	<span> {{ player()!.username }} </span>
+	<header class="row">
+		<div class="avatar icon hexagon">
+			<img class="icon" src="{{ Utils.getAvatarURL(player()!.user_id) }}" alt="" />
+		</div>
+
+		<div class="profile-info-wrapper">
+			<div class="profile-info row flex-center-vertical">
+				<span class="username">{{ player()!.username }}</span>
+				<span class="rank">#{{ player()!.rank }}</span>
+				<span class="score">{{ Utils.roundNumber(player()!.score) }}</span>
+			</div>
+			<div class="subheader flex-center">
+				<a
+					class="a no-decoration"
+					target="_blank"
+					href="{{ Utils.getOsuProfileURL(player()!.user_id) }}"
+					aria-label="osu! profile"
+					/* use:tooltip={{ content: "osu! profile" }} */
+					rel="noreferrer"
+				>
+					<div class="icon-wrapper osu-icon-wrapper">
+						<div></div>
+						<span class="icon osu bigger"></span>
+					</div>
+				</a>
+				<a
+					class="a no-decoration"
+					target="_blank"
+					href="{{ Utils.getOsuStatsURL(player()!.username) }}"
+					aria-label="osu!Stats"
+					/* use:tooltip={{ content: "osu!Stats" }} */
+					rel="noreferrer"
+				>
+					<div class="icon-wrapper chart-icon-wrapper">
+						<div></div>
+						<span class="icon chart-line"></span>
+					</div>
+				</a>
+				<a
+					class="a no-decoration"
+					target="_blank"
+					href="{{ Utils.getOsuTrackURL(player()!.username) }}"
+					aria-label="osu!track"
+					/* use:tooltip={{ content: "osu!track" }} */
+					rel="noreferrer"
+				>
+					<div class="icon-wrapper">
+						<div></div>
+						<span class="icon chart-bar"></span>
+					</div>
+				</a>
+				<a
+					class="a no-decoration"
+					target="_blank"
+					href="{{ Utils.getOsuAltURL(player()!.user_id) }}"
+					aria-label="osu! scores inspector"
+					/* use:tooltip={{ content: "osu! scores inspector" }} */
+					rel="noreferrer"
+				>
+					<div class="icon-wrapper">
+						<div></div>
+						<div style="font-weight: 300">alt</div>
+					</div>
+				</a>
+				<a
+					class="a no-decoration"
+					target="_blank"
+					href="{{ Utils.getOsuDailyURL(player()!.username) }}"
+					aria-label="osu!daily"
+					/* use:tooltip={{ content: "osu!daily" }} */
+					rel="noreferrer"
+				>
+					<div class="icon-wrapper">
+						<div></div>
+						<div style="font-weight: 500">S</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<span title="{{ peakRankDate }}">#{{ player()!.rank_highest.rank }}</span>
 
 	<multi-line-chart
 		[data]="rankData"

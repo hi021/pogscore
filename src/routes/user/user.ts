@@ -24,7 +24,9 @@ export class PlayerComponent {
 	protected readonly pageTitle = inject(PageTitle);
 	protected readonly player = signal<ScoreApi.UserRankResponse | undefined>(undefined);
 	protected readonly errorMsg = signal<string>('');
+	protected readonly Utils = Utils;
 	protected rankData: Array<{ x: Date | undefined; y: number | undefined }> = [];
+	protected peakRankDate = '';
 
 	protected tooltipTemplate(
 		d: PogScore.Datum<Date>,
@@ -59,6 +61,7 @@ export class PlayerComponent {
 					.map((entry) => {
 						return { x: new Date(entry.date), y: entry.rank };
 					});
+				this.peakRankDate = Utils.formatDate(new Date(player.rank_highest.updated_at));
 			} catch (e) {
 				this.errorMsg.set(e instanceof Error ? e.message : 'Unknown error');
 			}

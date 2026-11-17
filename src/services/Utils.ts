@@ -23,6 +23,19 @@ export class Utils {
 		return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, delimiter);
 	}
 
+	public static roundNumber(num: number, betweenSignAndNumber = ''): string {
+		let pre: string;
+		if (num < 0) pre = '-' + betweenSignAndNumber;
+		else pre = betweenSignAndNumber;
+		num = Math.abs(num);
+
+		if (num < 10_000) return pre + Utils.formatNumber(num);
+		if (num >= 10_000 && num < 1_000_000) return pre + Math.round(num / 10) / 100 + 'k';
+		if (num >= 1_000_000 && num < 1_000_000_000) return pre + Math.round(num / 10_000) / 100 + 'M';
+		if (num >= 1_000_000_000 && num < 1_000_000_000_000) return pre + Math.round(num / 10_000_000) / 100 + 'M';
+		return pre + Math.round(num / 10_000_000_000) / 100 + 'T';
+	}
+
 	public static formatDate(date?: Date, utc?: boolean) {
 		if (!date) date = new Date();
 		const YYYY = utc ? date.getUTCFullYear() : date.getFullYear();
@@ -50,10 +63,17 @@ export class Utils {
 	public static getOsuProfileURL(idOrName: number | string) {
 		return `https://osu.ppy.sh/users/${idOrName}`;
 	}
-	// public static getOsuStatsURL(name: string){ return `https://osustats.ppy.sh/u/${name}//1/////-/1-50`;}
-	// public static getOsuTrackURL(name: string){ return `https://ameobea.me/osutrack/user/${name}`;}
-	// public static getOsuAltURL(id: number | string){ return `https://score.kirino.sh/user/${id}`;}
-	// public static getOsuDailyURL(name: string){ return `https://osudaily.net/profile.php?u=${name}&s=1&m=0`;}
-	// public static getOsuSnipeURL(id: number | string, country = "global"){ return
-	// 	`https://snipe.huismetbenen.nl/player/${country.toLowerCase()}/osu/${id}`;}
+	public static getOsuStatsURL(name: string) {
+		return `https://osustats.ppy.sh/u/${name}//1/////-/1-50`;
+	}
+	public static getOsuTrackURL(name: string) {
+		return `https://ameobea.me/osutrack/user/${name}`;
+	}
+	public static getOsuAltURL(id: number | string) {
+		return `https://score.kirino.sh/user/${id}`;
+	}
+	public static getOsuDailyURL(name: string) {
+		return `https://osudaily.net/profile.php?u=${name}&s=1&m=0`;
+	}
+	// TODO: pogstats url one day....
 }
