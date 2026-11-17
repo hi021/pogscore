@@ -32,7 +32,7 @@ export class Utils {
 		if (num < 10_000) return pre + Utils.formatNumber(num);
 		if (num >= 10_000 && num < 1_000_000) return pre + Math.round(num / 10) / 100 + 'k';
 		if (num >= 1_000_000 && num < 1_000_000_000) return pre + Math.round(num / 10_000) / 100 + 'M';
-		if (num >= 1_000_000_000 && num < 1_000_000_000_000) return pre + Math.round(num / 10_000_000) / 100 + 'M';
+		if (num >= 1_000_000_000 && num < 1_000_000_000_000) return pre + Math.round(num / 10_000_000) / 100 + 'B';
 		return pre + Math.round(num / 10_000_000_000) / 100 + 'T';
 	}
 

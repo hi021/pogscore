@@ -9,8 +9,12 @@
 		<div class="profile-info-wrapper">
 			<div class="profile-info row flex-center-vertical">
 				<span class="username">{{ player()!.username }}</span>
+				<div class="vr"></div>
 				<span class="rank">#{{ player()!.rank }}</span>
-				<span class="score">{{ Utils.roundNumber(player()!.score) }}</span>
+				<span title="{{ peakRankDate }}">#{{ player()!.rank_highest.rank }}</span>
+				<span title="{{ Utils.formatNumber(player()!.score) }}" class="score">{{
+					Utils.roundNumber(player()!.score)
+				}}</span>
 			</div>
 			<div class="subheader flex-center">
 				<a
@@ -81,8 +85,6 @@
 			</div>
 		</div>
 	</header>
-
-	<span title="{{ peakRankDate }}">#{{ player()!.rank_highest.rank }}</span>
 
 	<multi-line-chart
 		[data]="rankData"

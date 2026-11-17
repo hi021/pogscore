@@ -1,5 +1,5 @@
 $av-size: 6rem;
-$profile-info-height: 6rem / 2.25;
+$profile-info-height: calc($av-size / 2.25);
 
 header {
 	margin-bottom: 1rem;
@@ -10,17 +10,20 @@ header {
 }
 .profile-info {
 	height: $profile-info-height;
-	margin-top: ($av-size / 2 - $profile-info-height/2);
+	margin-top: calc($av-size / 2 - $profile-info-height / 2);
 	gap: 0.75rem;
 	padding: 0 1.25rem;
 	background-color: var(--color-pink);
+	clip-path: polygon(0 0, 100% 0, calc(100% - 1rem) 100%, 0 100%);
 }
 .subheader {
 	width: fit-content;
 	gap: 0.75rem;
-	padding: 0.25rem 0.5rem;
+	padding: 0.25rem 1.125rem;
 	margin: 0 auto;
+	font-size: 0.875rem;
 	background-color: var(--color-dark);
+	clip-path: polygon(0 0, 100% 0, calc(100% - 0.5rem) 100%, 0.5rem 100%);
 }
 
 .avatar {
@@ -49,9 +52,17 @@ header {
 }
 
 .username {
-	font-weight: 500;
+	font-weight: 300;
 }
 
 .rank {
+	// font-size: 0.925rem;
+	background-color: brown;
 	border-radius: 99999px;
+	padding: 2px 4px;
+}
+// TODO: rank bg colors
+
+.score {
+	font-weight: 600;
 }
