@@ -55,13 +55,45 @@ header {
 	font-weight: 300;
 }
 
+.peak-rank {
+	opacity: 0.8;
+}
 .rank {
-	// font-size: 0.925rem;
-	background-color: brown;
+	background-color: var(--color-darkish);
 	border-radius: 99999px;
 	padding: 2px 4px;
+
+	&.top-1 {
+		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
+		box-shadow: 1px 1px 5px var(--color-yellow);
+	}
+	&.top-5 {
+		background: linear-gradient(132deg, var(--color-light) 47%, var(--color-claret));
+		box-shadow: 1px 1px 5px var(--color-yellow);
+	}
+	&.top-10 {
+		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
+		box-shadow: 1px 1px 5px var(--color-yellow);
+	}
+	&.top-25 {
+		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
+	}
+	&.top-50 {
+		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
+	}
+	&.top-100 {
+		background-color: var(--color-purple);
+	}
+	&.top-500 {
+		background-color: var(--color-orange);
+	}
+	&.top-1000 {
+		background-color: var(--color-light-orange);
+	}
+	&.top-2500 {
+		background: linear-gradient(132deg, var(--color-darkish) 47%, var(--color-light));
+	}
 }
-// TODO: rank bg colors
 
 .score {
 	font-weight: 600;

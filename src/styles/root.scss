@@ -9,8 +9,8 @@
 	--color-lighter: oklch(88% 0 0);
 	--color-light: oklch(81% 0 0);
 
-	--color-active: oklch(80% 0.1 300);
-	/* --color-active-dark: #6a1b9a; */
+	--color-light-purple: oklch(80% 0.1 300);
+	--color-dark-purple: oklch(42% 0.19 308);
 	--color-pink: oklch(60% 0.17 355);
 	--color-purple: oklch(36% 0.17 300);
 	--color-claret: oklch(42% 0.17 355);
@@ -18,6 +18,9 @@
 	--color-green: oklch(55% 0.17 150);
 	--color-blue: oklch(55% 0.17 255);
 	--color-yellow: oklch(80% 0.17 70);
+	--color-orange: oklch(72% 0.17 52);
+	--color-light-orange: oklch(72% 0.11 59);
+	--color-gold: oklch(72.639% 0.14311 89.527);
 
 	/* Buttons */
 	--clr-gray: 0, 0%, 58%;
