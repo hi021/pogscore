@@ -20,3 +20,12 @@
 .a:not(.no-decoration):hover {
 	text-decoration: underline;
 }
+
+.vr {
+	width: 2px;
+	height: 50%;
+	border-radius: 99999px;
+	background-color: var(--color-lighter);
+	opacity: 0.8;
+	margin: 0 0.5rem;
+}

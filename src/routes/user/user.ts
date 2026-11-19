@@ -1,6 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Position } from '@unovis/ts/types';
 import { NgxTippyModule } from 'ngx-tippy-wrapper';
 import { MultiLineChartComponent } from '../../components/mutli-line-chart.component';
@@ -9,7 +9,7 @@ import { PageTitle } from '../../services/PageTitle';
 import { Utils } from '../../services/Utils';
 
 @Component({
-	imports: [MultiLineChartComponent, NgClass, NgxTippyModule],
+	imports: [MultiLineChartComponent, NgClass, NgxTippyModule, RouterLink],
 	styleUrl: './user.scss',
 	templateUrl: './user.html',
 })

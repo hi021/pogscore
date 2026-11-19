@@ -7,6 +7,10 @@ header {
 
 .profile-info-wrapper {
 	width: 100%;
+
+	.vr {
+		margin: 0;
+	}
 }
 .profile-info {
 	height: $profile-info-height;
@@ -14,16 +18,16 @@ header {
 	gap: 0.75rem;
 	padding: 0 1.25rem;
 	background-color: var(--color-pink);
-	clip-path: polygon(0 0, 100% 0, calc(100% - 1rem) 100%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, calc(100% - 1.333rem) 100%, 0 100%);
 }
 .subheader {
 	width: fit-content;
-	gap: 0.75rem;
 	padding: 0.25rem 1.125rem;
 	margin: 0 auto;
+	gap: 0.75rem;
 	font-size: 0.875rem;
 	background-color: var(--color-dark);
-	clip-path: polygon(0 0, 100% 0, calc(100% - 0.5rem) 100%, 0.5rem 100%);
+	clip-path: polygon(0 0, 100% 0, calc(100% - 0.667rem) 100%, 0.667rem 100%);
 }
 
 .avatar {
@@ -62,6 +66,7 @@ header {
 	background-color: var(--color-darkish);
 	border-radius: 99999px;
 	padding: 2px 4px;
+	margin-right: 0.25rem;
 
 	&.top-1 {
 		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
@@ -97,4 +102,10 @@ header {
 
 .score {
 	font-weight: 600;
+}
+
+.user-chart-container {
+	padding: 1rem;
+	background-color: var(--color-dark);
+	clip-path: polygon(1rem 0, 100% 0.75rem, 100% 100%, 0 100%);
 }

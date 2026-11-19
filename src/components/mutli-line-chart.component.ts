@@ -7,7 +7,6 @@ import {
 	VisXYContainerModule,
 } from '@unovis/angular';
 import { Direction, NumericAccessor, Position, Spacing } from '@unovis/ts/types';
-import { Utils } from '../services/Utils';
 
 @Component({
 	selector: 'multi-line-chart',
@@ -54,8 +53,8 @@ export class MultiLineChartComponent<T> {
 
 	@Input() width = 0;
 	@Input() height = 0;
-	@Input() margin: Spacing = { top: 20, right: 20, bottom: 40, left: 50 };
-	@Input() padding: Spacing = { top: 10, right: 10, bottom: 10, left: 10 };
+	@Input() margin: Spacing = { top: 0, right: 0, bottom: 0, left: 0 };
+	@Input() padding: Spacing = { top: 0, right: 0, bottom: 0, left: 0 };
 
 	protected getYColor = (d: unknown, i: number, key?: string, ...any: unknown[]) => {
 		return this.yColors[i % this.yColors.length];
