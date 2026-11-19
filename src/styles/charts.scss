@@ -1,9 +1,14 @@
 .chart-container {
 	--vis-crosshair-circle-stroke-opacity: 1;
+	--vis-crosshair-circle-stroke-width: 3;
 	--vis-crosshair-line-stroke-width: 3;
 	--vis-crosshair-line-stroke-color: var(--color-light-purple);
-	--vis-axis-grid-color: color-mix(in srgb, var(--color-lighter) 70%, transparent);
+	--vis-axis-tick-label-color: var(--color-dark);
+	--vis-dark-axis-tick-label-color: var(--color-lighter);
+	--vis-axis-grid-color: color-mix(in srgb, var(--color-dark) 70%, transparent);
 	--vis-dark-axis-grid-color: color-mix(in srgb, var(--color-lighter) 70%, transparent);
+	--vis-dark-axis-domain-color: color-mix(in srgb, var(--color-lighter) 70%, transparent);
+	--vis-dark-axis-tick-color: color-mix(in srgb, var(--color-lighter) 70%, transparent);
 
 	circle {
 		r: 6;

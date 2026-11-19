@@ -11,19 +11,29 @@
 				<span aria-label="osu! username" class="username">{{ player()!.username }}</span>
 				<div class="vr"></div>
 				<span>
-					<span class="rank" aria-label="current score rank" [ngClass]="getRankTier(player()!.rank)"
-					>#{{ player()!.rank }}</span
-				>
-				<span class="peak-rank" aria-label="peak score rank" [ngxTippy]="'Peak rank achieved ' + peakRankDate"
-					>#{{ player()!.rank_highest.rank }}</span
-				>
+					@if(player()!.rank >= 1) {
+						<span class="rank" aria-label="current score rank" [ngClass]="getRankTier(player()!.rank)">
+							#{{ player()!.rank }}
+						</span>
+					}
+				<span class="peak-rank" aria-label="peak score rank" [ngxTippy]="'Peak rank achieved ' + peakRankDate">
+					#{{ player()!.rank_highest.rank }}
+					</span>
 			</span>
+			@if(player()!.score >= 1000) {
 				<span
 					aria-label="ranked score"
 					[ngxTippy]="Utils.formatNumber(player()!.score) + ' ranked score'"
-					class="score"
-					>{{ Utils.roundNumber(player()!.score) }}</span
-				>
+					class="score">
+					{{ Utils.roundNumber(player()!.score) }}
+					</span>
+				}
+				@if(player()!.rank < 1) {
+					<span class="row flex-center" style="gap: 3px;">
+						<span class="icon warning" style="color: var(--color-yellow);"></span>
+						<span>No recent data for user</span>
+					</span>
+				}
 			</div>
 			<div class="subheader flex-center">
 				<a
@@ -107,7 +117,7 @@
 	<div class="subheader flex-center" style="margin-top: -1px;">
 		<button class="btn-icon">
 			<a class="a" [routerLink]="'/compare/' + player()!.user_id">
-				<span class="icon fullscreen" ngxTippy="Full comparison chart"></span>
+				<span class="icon fullscreen" ngxTippy="Full comparison chart" [tippyProps]="{placement: 'bottom'}"></span>
 			</a>
 		</button>
 	</div>

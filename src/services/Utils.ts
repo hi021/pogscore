@@ -23,6 +23,10 @@ export class Utils {
 		return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, delimiter);
 	}
 
+	public static getDaysBetweenDates(startTimestamp: number, endTimestamp = Utils.getServerDate().valueOf()) {
+		return Math.ceil((endTimestamp - startTimestamp) / (24 * 60 * 60 * 1000));
+	}
+
 	public static roundNumber(num: number, betweenSignAndNumber = ''): string {
 		let pre: string;
 		if (num < 0) pre = '-' + betweenSignAndNumber;

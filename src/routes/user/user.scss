@@ -69,22 +69,22 @@ header {
 	margin-right: 0.25rem;
 
 	&.top-1 {
-		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
+		background: linear-gradient(132deg, color-mix(transparent 50%, var(--color-purple)) 47%, color-mix(transparent 50%, var(--color-claret)));
 		box-shadow: 1px 1px 5px var(--color-yellow);
 	}
 	&.top-5 {
-		background: linear-gradient(132deg, var(--color-light) 47%, var(--color-claret));
+		background: linear-gradient(132deg, color-mix(transparent 50%, var(--color-light)) 47%, color-mix(transparent 50%, var(--color-claret)));
 		box-shadow: 1px 1px 5px var(--color-yellow);
 	}
 	&.top-10 {
-		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
+		background: linear-gradient(132deg, color-mix(transparent 50%, var(--color-purple)) 47%, color-mix(transparent 50%, var(--color-claret)));
 		box-shadow: 1px 1px 5px var(--color-yellow);
 	}
 	&.top-25 {
-		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
+		background: linear-gradient(132deg, color-mix(transparent 50%, var(--color-purple)) 47%, color-mix(transparent 50%, var(--color-claret)));
 	}
 	&.top-50 {
-		background: linear-gradient(132deg, var(--color-purple) 47%, var(--color-claret));
+		background: linear-gradient(132deg, color-mix(transparent 50%, var(--color-purple)) 47%, color-mix(transparent 50%, var(--color-claret)));
 	}
 	&.top-100 {
 		background-color: var(--color-purple);
@@ -96,7 +96,7 @@ header {
 		background-color: var(--color-light-orange);
 	}
 	&.top-2500 {
-		background: linear-gradient(132deg, var(--color-darkish) 47%, var(--color-light));
+		background: linear-gradient(132deg, color-mix(transparent 50%, var(--color-darkish)) 47%, color-mix(transparent 45%, var(--color-light)));
 	}
 }
 
@@ -105,7 +105,6 @@ header {
 }
 
 .user-chart-container {
-	padding: 1rem;
 	background-color: var(--color-dark);
 	clip-path: polygon(1rem 0, 100% 0.75rem, 100% 100%, 0 100%);
 }
