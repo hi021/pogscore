@@ -63,7 +63,7 @@ header {
 	opacity: 0.8;
 }
 .rank {
-	background-color: var(--color-darkish);
+	background-color: color-mix(transparent 55%, var(--color-darkish));
 	border-radius: 99999px;
 	padding: 2px 4px;
 	margin-right: 0.25rem;
@@ -118,8 +118,8 @@ header {
 	&.top-2500 {
 		background: linear-gradient(
 			132deg,
-			color-mix(transparent 50%, var(--color-darkish)) 47%,
-			color-mix(transparent 45%, var(--color-light))
+			color-mix(transparent 55%, var(--color-darkish)) 47%,
+			color-mix(transparent 55%, var(--color-light))
 		);
 	}
 }

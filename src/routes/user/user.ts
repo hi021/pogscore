@@ -16,7 +16,6 @@ import { Utils } from '../../services/Utils';
 export class PlayerComponent {
 	protected readonly xConfig: PogScore.AxisConfig = {
 		position: Position.Bottom,
-		label: { labelColor: 'var(--color-lighter)' },
 		tickFormat: (tick: number, i: number, a: number[]) => {
 			const days = Utils.getDaysBetweenDates(new Date(tick).setHours(0, 0, 0, 0));
 			return days === 0 ? 'now' : `${days} day${days === 1 ? '' : 's'} ago`;
@@ -24,7 +23,7 @@ export class PlayerComponent {
 	};
 	protected readonly yConfig: PogScore.AxisConfig = {
 		position: Position.Left,
-		label: { labelColor: 'var(--color-lighter)' },
+		tickFormat: (tick: number, i: number, a: number[]) => (Number.isInteger(tick) ? tick.toString() : ''),
 	};
 
 	protected readonly route = inject(ActivatedRoute);
@@ -32,13 +31,33 @@ export class PlayerComponent {
 	protected readonly player = signal<ScoreApi.UserRankResponse | undefined>(undefined);
 	protected readonly errorMsg = signal<string>('');
 	protected readonly Utils = Utils;
-	protected rankData: Array<{ x: Date | undefined; y: number | undefined }> = [];
+	protected rankData: Array<{ x: number | undefined; y: number | undefined }> = [];
 	protected peakRankDate = '';
 
+	constructor() {
+		this.route.params.subscribe(async (params) => {
+			try {
+				this.pageTitle.setTitle();
+				this.errorMsg.set('');
+				const player = await DataFetcher.fetchUser(params['idOrName']);
+				this.player.set(player);
+				this.pageTitle.setTitle(player?.username);
+				this.peakRankDate = Utils.formatDate(new Date(player.rank_highest.updated_at));
+				this.rankData = player?.rank_history
+					.filter((entry): entry is ScoreApi.RankHistoryEntry => !!entry?.date && !!entry.rank)
+					.map((entry) => {
+						return { x: new Date(entry.date).getTime(), y: entry.rank };
+					});
+			} catch (e) {
+				this.errorMsg.set(e instanceof Error ? e.message : 'Unknown error');
+			}
+		});
+	}
+
 	protected tooltipTemplate(
-		d: PogScore.Datum<Date>,
+		d: PogScore.Datum<number>,
 		x: number | Date,
-		data: Array<PogScore.Datum<Date>>,
+		data: Array<PogScore.Datum<number>>,
 		leftNearestDatumIndex?: number,
 	) {
 		const timestamp = Number(d?.x);
@@ -56,28 +75,8 @@ export class PlayerComponent {
     </table>`;
 	}
 
-	constructor() {
-		this.route.params.subscribe(async (params) => {
-			try {
-				this.pageTitle.setTitle();
-				this.errorMsg.set('');
-				const player = await DataFetcher.fetchUser(params['idOrName']);
-				this.player.set(player);
-				this.pageTitle.setTitle(player?.username);
-				this.rankData = player?.rank_history
-					.filter((entry): entry is ScoreApi.RankHistoryEntry => !!entry?.date && !!entry.rank)
-					.map((entry) => {
-						return { x: new Date(entry.date), y: entry.rank };
-					});
-				this.peakRankDate = Utils.formatDate(new Date(player.rank_highest.updated_at));
-			} catch (e) {
-				this.errorMsg.set(e instanceof Error ? e.message : 'Unknown error');
-			}
-		});
-	}
-
-	private getRankTier(rank: number) {
-		if (rank <= 1) return 'top-1';
+	protected getRankTier(rank: number) {
+		if (rank === 1) return 'top-1';
 		if (rank <= 5) return 'top-5';
 		if (rank <= 10) return 'top-10';
 		if (rank <= 25) return 'top-25';
