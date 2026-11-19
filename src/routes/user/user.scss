@@ -63,63 +63,63 @@ header {
 	opacity: 0.8;
 }
 .rank {
-	background-color: color-mix(transparent 55%, var(--color-darkish));
+	display: inline-flex;
 	border-radius: 99999px;
 	padding: 2px 4px;
 	margin-right: 0.25rem;
+	background-color: color-mix(transparent 70%, var(--color-darkish));
 
 	&.top-1 {
 		background: linear-gradient(
 			132deg,
-			color-mix(transparent 50%, var(--color-purple)) 47%,
-			color-mix(transparent 50%, var(--color-claret))
+			color-mix(transparent 50%, var(--color-claret)) 15%,
+			color-mix(transparent 50%, var(--color-purple))
 		);
-		box-shadow: 1px 1px 5px var(--color-yellow);
+		box-shadow: 0 0 2px 1px var(--color-orange);
 	}
 	&.top-5 {
 		background: linear-gradient(
 			132deg,
-			color-mix(transparent 50%, var(--color-light)) 47%,
-			color-mix(transparent 50%, var(--color-claret))
+			color-mix(transparent 50%, var(--color-claret)) 15%,
+			color-mix(transparent 50%, var(--color-purple))
 		);
-		box-shadow: 1px 1px 5px var(--color-yellow);
+		box-shadow: 0 0 2px 1px var(--color-lighter);
 	}
 	&.top-10 {
 		background: linear-gradient(
 			132deg,
-			color-mix(transparent 50%, var(--color-purple)) 47%,
-			color-mix(transparent 50%, var(--color-claret))
+			color-mix(transparent 50%, var(--color-claret)) 15%,
+			color-mix(transparent 50%, var(--color-purple))
 		);
-		box-shadow: 1px 1px 5px var(--color-yellow);
 	}
 	&.top-25 {
 		background: linear-gradient(
 			132deg,
-			color-mix(transparent 50%, var(--color-purple)) 47%,
-			color-mix(transparent 50%, var(--color-claret))
+			color-mix(transparent 50%, var(--color-claret)) 15%,
+			color-mix(transparent 62%, var(--color-orange))
 		);
 	}
 	&.top-50 {
 		background: linear-gradient(
 			132deg,
-			color-mix(transparent 50%, var(--color-purple)) 47%,
-			color-mix(transparent 50%, var(--color-claret))
+			color-mix(transparent 80%, var(--color-light-purple)) 25%,
+			color-mix(transparent 20%, var(--color-light-orange))
 		);
 	}
 	&.top-100 {
-		background-color: var(--color-purple);
+		background-color: color-mix(transparent 50%, var(--color-purple));
 	}
 	&.top-500 {
-		background-color: var(--color-orange);
+		background-color: color-mix(transparent 55%, var(--color-orange));
 	}
 	&.top-1000 {
-		background-color: var(--color-light-orange);
+		background-color: color-mix(transparent 67%, var(--color-light-purple));
 	}
 	&.top-2500 {
 		background: linear-gradient(
 			132deg,
-			color-mix(transparent 55%, var(--color-darkish)) 47%,
-			color-mix(transparent 55%, var(--color-light))
+			color-mix(transparent 70%, var(--color-darkish)) 33%,
+			color-mix(transparent 60%, var(--color-lighter))
 		);
 	}
 }
