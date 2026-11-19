@@ -53,8 +53,8 @@ export class MultiLineChartComponent<T> {
 
 	@Input() width = 0;
 	@Input() height = 0;
-	@Input() margin: Spacing = { top: 8, right: 18, bottom: 8, left: 18 };
-	@Input() padding: Spacing = { top: 1, right: 1, bottom: 1, left: 1 };
+	@Input() margin: Spacing = { top: 12, right: 16, bottom: 6, left: 18 };
+	@Input() padding: Spacing = { top: 2, right: 1, bottom: 1, left: 1 };
 
 	protected getYColor = (d: unknown, i: number, key?: string, ...any: unknown[]) => {
 		return this.yColors[i % this.yColors.length];

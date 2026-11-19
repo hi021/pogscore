@@ -17,11 +17,14 @@ export class PlayerComponent {
 	protected readonly xConfig: PogScore.AxisConfig = {
 		position: Position.Bottom,
 		label: { labelColor: 'var(--color-lighter)' },
-		tickFormat: (tick: number, i: number, a: number[]) => { const days = Utils.getDaysBetweenDates(new Date(tick).setHours(0,0,0,0)); return days === 0 ? "now" : `${days} day${days === 1 ? '' : 's'} ago`},
+		tickFormat: (tick: number, i: number, a: number[]) => {
+			const days = Utils.getDaysBetweenDates(new Date(tick).setHours(0, 0, 0, 0));
+			return days === 0 ? 'now' : `${days} day${days === 1 ? '' : 's'} ago`;
+		},
 	};
 	protected readonly yConfig: PogScore.AxisConfig = {
 		position: Position.Left,
-		label: { labelColor: 'var(--color-lighter)' }
+		label: { labelColor: 'var(--color-lighter)' },
 	};
 
 	protected readonly route = inject(ActivatedRoute);
@@ -62,7 +65,7 @@ export class PlayerComponent {
 				this.player.set(player);
 				this.pageTitle.setTitle(player?.username);
 				this.rankData = player?.rank_history
-					.filter((entry): entry is ScoreApi.RankHistoryEntry => !!entry?.date)
+					.filter((entry): entry is ScoreApi.RankHistoryEntry => !!entry?.date && !!entry.rank)
 					.map((entry) => {
 						return { x: new Date(entry.date), y: entry.rank };
 					});
