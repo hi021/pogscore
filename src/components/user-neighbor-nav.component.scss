@@ -5,7 +5,7 @@
 
 .user-neighbor-padding {
 	background-color: var(--color-dark);
-  clip-path: polygon(0.75rem 0.5rem, 100% 0, calc(100% - 0.75rem) 100%, 0 100%);
+	clip-path: polygon(0.75rem 0.5rem, 100% 0, calc(100% - 0.75rem) 100%, 0 100%);
 }
 
 .neighbor-link-wrapper {
@@ -18,7 +18,7 @@
 	}
 }
 .neighbor-link-wrapper-prev:is(:focus-within, :hover) {
-  filter: drop-shadow(-0.5rem 0.5rem 0 var(--color-pink));
+	filter: drop-shadow(-0.5rem 0.5rem 0 var(--color-pink));
 }
 
 .neighbor-link {
