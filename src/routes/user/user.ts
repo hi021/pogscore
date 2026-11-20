@@ -16,7 +16,7 @@ import { Utils } from '../../services/Utils';
 })
 export class PlayerComponent {
 	protected readonly xConfig: PogScore.AxisConfig = {
-		position: Position.Bottom
+		position: Position.Bottom,
 	};
 	protected readonly yConfig: PogScore.AxisConfig = {
 		position: Position.Left,

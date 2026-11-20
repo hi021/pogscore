@@ -128,7 +128,7 @@
 		</button>
 	</div>
 
-	@if (player()!.next || player()!.prev) {
+	@if (player()!.rank >= 1) {
 		<app-user-neighbor-nav [player]="player()!" />
 	}
 } @else {
