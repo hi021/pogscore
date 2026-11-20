@@ -5,10 +5,11 @@
 			type="text"
 			name="query"
 			placeholder="osu! username"
-			autocomplete="new-password"
+			autocomplete="off"
 			spellcheck="false"
 			[disabled]="disabled"
 			[(ngModel)]="query"
+			(input)="onInput()"
 		/>
 		<ul class="autocmp-items">
 			@for (plr of autocompleteEntries; track plr.user_id) {
