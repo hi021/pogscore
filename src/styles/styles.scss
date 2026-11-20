@@ -29,3 +29,10 @@
 	opacity: 0.8;
 	margin: 0 0.5rem;
 }
+
+.avatar-small {
+	width: 0.925em;
+	height: 0.925em;
+	border-radius: 50%;
+	border: 2px solid var(--color-lighter);
+}

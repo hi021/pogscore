@@ -34,9 +34,11 @@
 		--radius: 0;
 		position: relative;
 		width: 100%;
-		min-width: 2rem;
+		min-width: 4rem;
+		max-width: 48rem;
 		align-items: center;
 		padding: 0;
+		margin: 0 auto;
 		border-radius: var(--radius);
 		background-color: transparent;
 		filter: drop-shadow(0 0 0 color-mix(transparent 100%, var(--color-pink)));
@@ -44,19 +46,20 @@
 	}
 	.search-input-wrapper.disabled {
 		opacity: 0.5;
+		pointer-events: none;
 	}
 	.search-input-wrapper:focus-within {
 		filter: drop-shadow(0.5rem 0.5rem 0 var(--color-pink));
 	}
 
+	/* TODO: hide on small screens */
 	.btn-search {
-		position: relative;
-		align-self: stretch;
-		flex: 0 0 3em;
-		width: 3em;
-		color: var(--color-lighter);
+		width: 3rem;
 		padding: 10px;
+		margin-left: -1px;
+		align-self: stretch;
 		border-radius: 0;
+		color: inherit;
 		background-color: var(--color-dark);
 		clip-path: polygon(0 0.2rem, calc(100% - 0.333rem) 0.333rem, 100% calc(100% - 0.1rem), 0 calc(100% - 0.333rem));
 	}

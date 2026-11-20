@@ -118,10 +118,19 @@
 	<div class="subheader flex-center" style="margin-top: -1px">
 		<button class="btn-icon">
 			<a class="a" [routerLink]="'/compare/' + player()!.user_id">
-				<span class="icon fullscreen" ngxTippy="Full comparison chart" [tippyProps]="{ placement: 'bottom' }"></span>
+				<span
+					class="icon fullscreen"
+					style="color: var(--color-lighter)"
+					ngxTippy="Full comparison chart"
+					[tippyProps]="{ placement: 'bottom' }"
+				></span>
 			</a>
 		</button>
 	</div>
+
+	@if (player()!.next || player()!.prev) {
+		<app-user-neighbor-nav [player]="player()!" />
+	}
 } @else {
 	<p>loading...</p>
 }

@@ -1,0 +1,37 @@
+<div class="user-neighbor-nav-container row" aria-label="Adjacent players">
+	@if (player().next; as plr) {
+		<div class="neighbor-link-wrapper">
+			<a
+				class="neighbor-link neighbor-next row flex-center-vertical"
+				[routerLink]="['/player', plr.user_id]"
+				[attr.aria-label]="'Next player: ' + plr.username + ', rank ' + (player().rank + 1)"
+			>
+				<span class="neighbor-direction icon arrow-left"></span>
+				<span class="neighbor-info-container row flex-center">
+					<img class="avatar-small" alt="" [src]="Utils.getAvatarURL(plr.user_id)" />
+					<span class="neighbor-username">{{ plr.username }}</span>
+					<span class="neighbor-rank">#{{ player().rank - 1 }}</span>
+				</span>
+			</a>
+		</div>
+	}
+
+	<div class="user-neighbor-padding flex-fill"></div>
+
+	@if (player().prev; as plr) {
+		<div class="neighbor-link-wrapper">
+			<a
+				class="neighbor-link neighbor-prev row flex-center-vertical"
+				[routerLink]="['/player', plr.user_id]"
+				[attr.aria-label]="'Previous player: ' + plr.username + ', rank ' + (player().rank - 1)"
+			>
+				<span class="neighbor-info-container row flex-center">
+					<img class="avatar-small" alt="" [src]="Utils.getAvatarURL(plr.user_id)" />
+					<span class="neighbor-username">{{ plr.username }}</span>
+					<span class="neighbor-rank">#{{ player().rank + 1 }}</span>
+				</span>
+				<span class="neighbor-direction icon arrow-right"></span>
+			</a>
+		</div>
+	}
+</div>

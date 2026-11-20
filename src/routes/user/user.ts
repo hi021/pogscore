@@ -4,12 +4,13 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Position } from '@unovis/ts/types';
 import { NgxTippyModule } from 'ngx-tippy-wrapper';
 import { MultiLineChartComponent } from '../../components/mutli-line-chart.component';
+import { UserNeighborNavComponent } from '../../components/user-neighbor-nav.component';
 import { DataFetcher } from '../../services/DataFetcher';
 import { PageTitle } from '../../services/PageTitle';
 import { Utils } from '../../services/Utils';
 
 @Component({
-	imports: [MultiLineChartComponent, NgClass, NgxTippyModule, RouterLink],
+	imports: [MultiLineChartComponent, NgClass, NgxTippyModule, RouterLink, UserNeighborNavComponent],
 	styleUrl: './user.scss',
 	templateUrl: './user.html',
 })
