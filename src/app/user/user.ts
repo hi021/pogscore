@@ -52,26 +52,29 @@ export class PlayerComponent {
 		});
 	}
 
-	protected tooltipTemplate(
+	protected readonly tooltipTemplate = (
 		d: PogScore.Datum<number>,
 		x: number | Date,
 		data: Array<PogScore.Datum<number>>,
 		leftNearestDatumIndex?: number,
-	) {
-		const timestamp = Number(d?.x);
-		if (isNaN(timestamp)) return '';
+	) => {
+		if (!d?.x) return '';
+		const timestamp = new Date(d.x).setHours(0, 0, 0, 0);
+		const days = Utils.getDaysBetweenDates(timestamp);
+		const daysString = days === 0 ? 'now' : `${days} day${days === 1 ? '' : 's'} ago`;
 
 		let tooltipString = "<table class='comparison-tooltip-table'><tbody>";
 		// TODO
 		// for (const plrId in d.players) tooltipString += tooltipPlayerHTML(d, plrId);
+		tooltipString += `<tr><td>${this.player()!.username}</td><td style="color: var(--color-light-purple);">#${d.y}</td></tr>`;
 
 		return `${tooltipString}
-      <tr><td colspan='3' style='text-align: center;'>
-        <small style="color: var(--color-light-purple);">${Utils.formatDate(new Date(timestamp))}</small>
+      <tr><td colspan='2' style='text-align: center;'>
+        <small style="color: var(--color-lighter);">${daysString}</small>
       </td></tr>
     </tbody>
     </table>`;
-	}
+	};
 
 	protected getRankTier(rank: number) {
 		if (rank === 1) return 'top-1';
