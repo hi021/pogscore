@@ -119,7 +119,7 @@
 	</div>
 	<div class="subheader flex-center" style="margin-top: -1px">
 		<button class="btn-icon">
-			<a class="a" [routerLink]="'/compare/' + player()!.user_id">
+			<a class="a" [routerLink]="['/compare', player()!.user_id]">
 				<span
 					class="icon fullscreen"
 					style="color: var(--color-lighter)"

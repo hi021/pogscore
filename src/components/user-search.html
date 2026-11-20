@@ -9,12 +9,11 @@
 			spellcheck="false"
 			[disabled]="disabled"
 			[(ngModel)]="query"
-			style="--shadow-color: {{ autocompleteEntries.length ? 'transparent' : 'var(--color-darkest)' }}"
 		/>
 		<ul class="autocmp-items">
 			@for (plr of autocompleteEntries; track plr.user_id) {
 				<li>
-					<a routerLink="/player/{{ plr.user_id }}" class="autocmp-item" tabindex="0" role="button">
+					<a [routerLink]="['/player', plr.user_id]" class="autocmp-item" tabindex="0" role="button">
 						<img class="osu-avatar-small" alt="" [src]="Utils.getAvatarURL(plr.user_id)" style="margin-right: 1rem" />
 						<span>{{ plr.username }}</span>
 						<span class="autocmp-rank" style="margin-left: auto">#{{ plr.rank }}</span>
