@@ -1,6 +1,6 @@
 <div class="user-neighbor-nav-container row" aria-label="Adjacent players">
 	@if (player().next; as plr) {
-		<div class="neighbor-link-wrapper">
+		<div class="neighbor-link-wrapper neighbor-link-wrapper-next">
 			<a
 				class="neighbor-link neighbor-next row flex-center-vertical"
 				[routerLink]="['/player', plr.user_id]"
@@ -19,7 +19,7 @@
 	<div class="user-neighbor-padding flex-fill"></div>
 
 	@if (player().prev; as plr) {
-		<div class="neighbor-link-wrapper">
+		<div class="neighbor-link-wrapper neighbor-link-wrapper-prev">
 			<a
 				class="neighbor-link neighbor-prev row flex-center-vertical"
 				[routerLink]="['/player', plr.user_id]"

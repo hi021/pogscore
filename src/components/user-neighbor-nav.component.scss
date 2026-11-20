@@ -1,11 +1,11 @@
 .user-neighbor-nav-container {
 	gap: 1rem;
 	margin-top: 2rem;
-	// font-size: 3rem;
 }
 
 .user-neighbor-padding {
 	background-color: var(--color-dark);
+  clip-path: polygon(0.75rem 0.5rem, 100% 0, calc(100% - 0.75rem) 100%, 0 100%);
 }
 
 .neighbor-link-wrapper {
@@ -17,11 +17,13 @@
 		filter: drop-shadow(0.5rem 0.5rem 0 var(--color-pink));
 	}
 }
+.neighbor-link-wrapper-prev:is(:focus-within, :hover) {
+  filter: drop-shadow(-0.5rem 0.5rem 0 var(--color-pink));
+}
 
 .neighbor-link {
 	min-width: 0;
 	padding: 0.5rem 0;
-	gap: 0.25rem;
 	color: var(--color-lighter);
 	background-color: var(--color-dark);
 	text-decoration: none;
@@ -36,7 +38,7 @@
 }
 .neighbor-prev {
 	padding-left: 1.5rem;
-	clip-path: polygon(0.75rem 0, 100% 0, 100% 100%, 0 100%);
+	clip-path: polygon(0.75rem 0, 100% 0, calc(100% - 0.5rem) calc(100% - 0.333rem), 0 100%);
 
 	& > .neighbor-info-container {
 		flex-direction: row-reverse;
@@ -44,7 +46,7 @@
 }
 
 .neighbor-info-container {
-	gap: 0.25rem;
+	gap: 0.667rem;
 }
 
 .neighbor-direction {
