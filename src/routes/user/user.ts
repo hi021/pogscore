@@ -16,11 +16,7 @@ import { Utils } from '../../services/Utils';
 })
 export class PlayerComponent {
 	protected readonly xConfig: PogScore.AxisConfig = {
-		position: Position.Bottom,
-		tickFormat: (tick: number, i: number, a: number[]) => {
-			const days = Utils.getDaysBetweenDates(new Date(tick).setHours(0, 0, 0, 0));
-			return days === 0 ? 'now' : `${days} day${days === 1 ? '' : 's'} ago`;
-		},
+		position: Position.Bottom
 	};
 	protected readonly yConfig: PogScore.AxisConfig = {
 		position: Position.Left,
