@@ -15,9 +15,11 @@
 			@for (plr of autocompleteEntries; track plr.user_id) {
 				<li>
 					<a [routerLink]="['/player', plr.user_id]" class="autocmp-item" tabindex="0" role="button">
-						<img class="osu-avatar-small" alt="" [src]="Utils.getAvatarURL(plr.user_id)" style="margin-right: 1rem" />
+						<img class="avatar-medium" alt="" [src]="Utils.getAvatarURL(plr.user_id)" />
 						<span>{{ plr.username }}</span>
-						<span class="autocmp-rank" style="margin-left: auto">#{{ plr.rank }}</span>
+						@if (plr.rank) {
+							<span class="autocmp-rank">#{{ plr.rank }}</span>
+						}
 					</a>
 				</li>
 			}
@@ -80,42 +82,48 @@
 	}
 
 	.autocmp-wrapper {
-		width: auto;
-		flex: 1 1 0;
-		min-width: 0;
 		position: relative;
 		display: inline-flex;
+		width: auto;
+		min-width: 0;
+		flex: 1 1 0;
 	}
 	.autocmp-items {
 		position: absolute;
-		top: 100%;
+		top: calc(100% - 0.25em);
 		left: 0;
 		right: -3em;
 		margin: 0;
 		padding: 0 24px;
-		z-index: 2;
 		list-style: none;
+		z-index: -1;
 	}
-	.autocmp-items > li:last-child > .autocmp-item {
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
+	.autocmp-items > li:first-child > .autocmp-item {
+		padding-top: 0.6825em;
 	}
 
 	.autocmp-item {
 		display: flex;
+		align-items: center;
 		top: 100%;
 		left: 0;
 		right: 0;
+		padding: 0.375em 0.5em;
+		gap: 0.5em;
 		cursor: pointer;
 		color: inherit;
 		background-color: var(--color-darkish);
 		text-decoration: none;
-		align-items: center;
 		line-height: 1;
-		padding: 0.5rem;
 	}
-	.autocmp-item:is(:hover, :focus) {
+	.autocmp-item:is(:hover, :focus-visible) {
 		outline-color: transparent;
 		background-color: var(--color-purple);
+	}
+
+	.autocmp-rank {
+		margin-left: auto;
+		opacity: 0.8;
+		font-size: 75%;
 	}
 </style>

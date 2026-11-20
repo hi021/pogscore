@@ -17,7 +17,7 @@ export class UserSearchComponent {
 
 	onSubmit() {
 		if (!this.query) return;
-		this.autocompleteEntries = []
+		this.autocompleteEntries = [];
 		this.disabled = true;
 		void this.router.navigate(['/player', this.query]);
 	}
@@ -25,11 +25,11 @@ export class UserSearchComponent {
 	onInput() {
 		// TODO: need the autocompletion endpoint...
 		this.autocompleteEntries = [
-			{rank: 0, user_id: 300961, username: "Shadow"},
-			{rank: 0, user_id: 494970, username: "ShadowSoul"},
-			{rank: 1281, user_id: 7801227, username: "Shady"},
-			{rank: 378, user_id: 5795337, username: "TheShadowOfDark"},
-			{rank: 1328, user_id: 5795337, username: "TheShadow0fDark"}
-		]
+			{ rank: 0, user_id: 300961, username: 'Shadow' },
+			{ rank: 0, user_id: 494970, username: 'ShadowSoul' },
+			{ rank: 1281, user_id: 7801227, username: 'Shady' },
+			{ rank: 378, user_id: 5795337, username: 'TheShadowOfDark' },
+			{ rank: 1328, user_id: 5795337, username: 'TheShadow0fDark' },
+		];
 	}
 }

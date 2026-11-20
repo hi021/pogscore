@@ -37,3 +37,8 @@
 	border-radius: 50%;
 	border: 1px solid var(--color-lighter);
 }
+.avatar-medium {
+	width: 2em;
+	height: 2em;
+	clip-path: polygon(0.1em 0.125em, 100% 0, calc(100% - 0.15em) calc(100% - 0.1em), 0 100%);
+}
