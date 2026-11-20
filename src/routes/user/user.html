@@ -107,13 +107,15 @@
 	</header>
 
 	<div class="user-chart-container">
-		<multi-line-chart
-			[data]="rankData"
-			yDirection="south"
-			[xConfig]="xConfig"
-			[yConfig]="yConfig"
-			[tooltipTemplate]="tooltipTemplate"
-		></multi-line-chart>
+		@if (rankData.length > 1) {
+			<multi-line-chart
+				[data]="rankData"
+				yDirection="south"
+				[xConfig]="xConfig"
+				[yConfig]="yConfig"
+				[tooltipTemplate]="tooltipTemplate"
+			></multi-line-chart>
+		}
 	</div>
 	<div class="subheader flex-center" style="margin-top: -1px">
 		<button class="btn-icon">
@@ -132,5 +134,26 @@
 		<app-user-neighbor-nav [player]="player()!" />
 	}
 } @else {
-	<p>loading...</p>
+	<div class="user-loading" role="status" aria-label="Loading player profile" aria-busy="true">
+		<header class="row">
+			<div class="avatar icon hexagon loading-glimmer"></div>
+			<div class="profile-info-wrapper">
+				<div class="profile-info row flex-center-vertical loading-glimmer">
+					<span class="loading-placeholder loading-player-info"></span>
+				</div>
+				<div class="subheader flex-center" aria-hidden="true">
+					<span class="loading-placeholder loading-filler-small"></span>
+					<span class="loading-placeholder loading-filler-small"></span>
+					<span class="loading-placeholder loading-filler-small"></span>
+					<span class="loading-placeholder loading-filler-small"></span>
+					<span class="loading-placeholder loading-filler-small"></span>
+				</div>
+			</div>
+		</header>
+
+		<div class="user-chart-container loading-placeholder loading-chart-surface loading-glimmer" aria-hidden="true"></div>
+		<div class="subheader flex-center" style="margin-top: -1px" aria-hidden="true">
+			<span class="loading-placeholder loading-filler-smaller"></span>
+		</div>
+	</div>
 }

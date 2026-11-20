@@ -1,0 +1,49 @@
+.loading-glimmer {
+	position: relative;
+	overflow: hidden;
+
+	&::after {
+    content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			100deg,
+			transparent 20%,
+			color-mix(in srgb, var(--color-lightest) 24%, transparent) 50%,
+			transparent 80%
+		);
+		transform: translateX(-100%);
+		animation: loading-glimmer 1.5s ease-in-out infinite;
+		pointer-events: none;
+	}
+}
+
+.loading-placeholder {
+	display: block;
+	flex: none;
+	border-radius: 2px;
+	background-color: color-mix(in srgb, var(--color-lightest) 33%, var(--color-dark));
+}
+.loading-filler-smaller {
+	width: 1em;
+	height: 1em;
+	visibility: hidden;
+}
+.loading-filler-small {
+	width: 1.8125em;
+	height: 1.8125em;
+	visibility: hidden;
+}
+
+@keyframes loading-glimmer {
+	to {
+		transform: translateX(100%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.loading-glimmer::after {
+		animation: none;
+		background: none;
+	}
+}

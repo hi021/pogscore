@@ -129,6 +129,20 @@ header {
 }
 
 .user-chart-container {
+	height: 20rem;
 	background-color: var(--color-dark);
 	clip-path: polygon(1rem 0, 100% 0.75rem, 100% 100%, 0 100%);
+}
+
+.user-loading {
+	.profile-info {
+		background-color: color-mix(in srgb, var(--color-pink) 70%, var(--color-dark));
+	}
+
+	.loading-player-info {
+		width: 13rem;
+		height: 1.1rem;
+		background-color: var(--color-light);
+		opacity: 0.5;
+	}
 }

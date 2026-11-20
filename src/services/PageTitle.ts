@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 export class PageTitle {
 	private readonly documentTitle = inject(Title);
 
-	setTitle(suffix?: string | null): void {
+	setTitle(suffix?: string | null) {
 		this.documentTitle.setTitle(suffix ? `pogscore - ${suffix}` : 'pogscore');
 	}
 }

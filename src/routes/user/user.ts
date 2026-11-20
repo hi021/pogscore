@@ -33,6 +33,7 @@ export class PlayerComponent {
 
 	constructor() {
 		this.route.params.subscribe(async (params) => {
+			this.player.set(undefined);
 			try {
 				this.pageTitle.setTitle();
 				this.errorMsg.set('');
@@ -40,7 +41,7 @@ export class PlayerComponent {
 				this.player.set(player);
 				this.pageTitle.setTitle(player?.username);
 				this.peakRankDate = Utils.formatDate(new Date(player.rank_highest.updated_at));
-				this.rankData = player?.rank_history
+				this.rankData = (player?.rank_history ?? [])
 					.filter((entry): entry is ScoreApi.RankHistoryEntry => !!entry?.date && !!entry.rank)
 					.map((entry) => {
 						return { x: new Date(entry.date).getTime(), y: entry.rank };
