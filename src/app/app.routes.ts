@@ -1,11 +1,17 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from '../routes/home/home';
-import { PlayerComponent } from '../routes/user/user';
-import { RankingComponent } from '../routes/ranking/ranking';
+import { About } from './about/about';
+import { Compare } from './compare/compare';
+import { HomeComponent } from './home/home';
+import { RankingComponent } from './ranking/ranking';
+import { PlayerComponent } from './user/user';
 
 export const routes: Routes = [
 	{
 		path: '',
+		component: HomeComponent,
+	},
+	{
+		path: 'player',
 		component: HomeComponent,
 	},
 	{
@@ -16,6 +22,15 @@ export const routes: Routes = [
 		path: 'ranking/**',
 		component: RankingComponent,
 	},
+	{
+		path: 'about',
+		component: About,
+	},
+	{
+		path: 'compare/**',
+		component: Compare,
+	},
 
+	// TODO: 404 failover
 	// path: '**'
 ];
